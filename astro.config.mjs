@@ -9,5 +9,8 @@ import netlify from '@astrojs/netlify';
 export default defineConfig({
   site: 'https://example.com',
   integrations: [mdx(), sitemap()],
-  adapter: netlify(),
+  output: 'server',
+  adapter: netlify({
+    edgeMiddleware: true
+  }),
 });
