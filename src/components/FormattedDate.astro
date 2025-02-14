@@ -1,18 +1,17 @@
 ---
 interface Props {
-  date?: Date; // Делаем `date` необязательным
+	date: Date;
 }
 
 const { date } = Astro.props;
-
-// Подставляем текущую дату, если `date` не передан
-const safeDate = date instanceof Date ? date : new Date();
 ---
 
-<time datetime={safeDate.toISOString()}>
-  {safeDate.toLocaleDateString('en-GB', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  })}
+<time datetime={date.toISOString()}>
+	{
+		date.toLocaleDateString('en-gb', {
+			year: 'numeric',
+			month: 'short',
+			day: 'numeric',
+		})
+	}
 </time>
